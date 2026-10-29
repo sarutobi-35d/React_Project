@@ -1,13 +1,31 @@
-import List from './components/list'
+import { useEffect, useState } from 'react'
 
-import './App.scss'
+
+import './App.css'
 
 function App() {
+
+  const [heure, setHeure] = useState(new Date());
+
+  useEffect(() => {
+
+    const intervalID = setInterval(() =>{
+      
+      setHeure(new Date());
+
+    }, 1000);
+
+    return() => {
+      clearInterval(intervalID);
+    }
+
+  }, [])
 
   return (
     
     <>
-      <List />   
+      <h2>Heure Actuelle</h2>
+      <p>{heure.toLocaleTimeString()}</p>
     </>
 
   )
