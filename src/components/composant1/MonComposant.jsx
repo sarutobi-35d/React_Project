@@ -1,13 +1,27 @@
+import { useState } from 'react'
+
 import './MonComposant.css'
 
 
-export default function MonComposant({state}){
+export default function MonComposant({onStatusChange,...props}){
+
+    const [internalState, setInternalState] = useState("State du child");
+
+    const handleChange = () => {
+
+        const newState = "Nouvelle état du childState";
+        onStatusChange(newState);
+        setInternalState(newState);
+    }
+
+    
 
     return(
 
         <>
-           <h1>State: {state}</h1> 
-            
+            <p>{props.propsParent}</p>
+            <p>État du composant enfant: {internalState}</p>
+            <button onClick={handleChange}>Changer l'état</button>
         </>
     )
 }
