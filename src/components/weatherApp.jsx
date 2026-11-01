@@ -11,14 +11,6 @@ export default function WeatherApp(){
 
     const [weather, setWeather] = useState(null);
 
-    useEffect(() => {
-        loadInfo();
-    }, []);
-
-    useEffect(()=>{
-        document.title = `Météo | ${weather?.location.name ?? ''}`
-    }, [weather]);
-
     async function loadInfo(city='london') {
 
         try {
@@ -41,7 +33,15 @@ export default function WeatherApp(){
         
     }
 
+    useEffect(() => {
+        loadInfo();
+    }, []);
 
+    useEffect(()=>{
+        document.title = `Météo | ${weather?.location.name ?? ''}`
+    }, [weather]);
+
+    
     function handleChange(city){
         setWeather(null);
         loadInfo(city);
