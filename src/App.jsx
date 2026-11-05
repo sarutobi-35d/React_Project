@@ -1,5 +1,6 @@
-import ThemeProvider from './context/ThemeProvider';
-import Counter from './components/Counter';
+import ToggleLang from './components/ToggleLang';
+import ContextProvider from './context/LangContext';
+import Contenu from './components/Contenu';
 
 import './App.css'
 
@@ -7,15 +8,10 @@ function App() {
 
   return (
     
-    <>
-      <ThemeProvider>
-        <div>
-          <h1>useContext</h1>
-          <Counter />
-        </div>
-      </ThemeProvider>
-      
-    </>
+    <ContextProvider>
+      <ToggleLang/>
+      <Contenu />
+    </ContextProvider>
 
   )
 }
