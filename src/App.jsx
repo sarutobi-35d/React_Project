@@ -1,26 +1,25 @@
-import { useState } from 'react'
-import Button from './components/Button';
-
 import './App.css'
+
+import {createPortal} from 'react-dom'
 
 function App() {
 
-  const [count, setCount] = useState(0);  
+  const MyPortal = ({children}) => {
 
-  const handleIncrement = () => {
-    setCount(count + 1);
-  }
+    const protalRoot = document.getElementById("portal-root");
 
-  const handleDecrement = () => {
-    setCount(count - 1);
+    return createPortal(children, protalRoot);
   }
 
   return (
     
     <>
-      <p>Compteur: {count}</p>
-      <Button onClick={handleIncrement} label="Increment" />
-      <Button onClick={handleDecrement} label="Decrement" />
+      <div>
+        <p>Contenu du composant parent</p>
+        <MyPortal>
+          <p>Contenu de l'enfant via le portal.</p>
+        </MyPortal>
+      </div>
     </>
 
   )
