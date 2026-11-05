@@ -1,22 +1,26 @@
-import { useState, useCallback } from 'react'
-import Composant from './components/composant';
+import { useState } from 'react'
+import Button from './components/Button';
 
 import './App.css'
 
 function App() {
 
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);  
 
-  //Utilise useCallback pour mémoriser la fonction handleClick
-  const handleClick = useCallback(() => {
+  const handleIncrement = () => {
     setCount(count + 1);
-  }, [count])
+  }
+
+  const handleDecrement = () => {
+    setCount(count - 1);
+  }
 
   return (
     
     <>
       <p>Compteur: {count}</p>
-      <Composant onClick={handleClick} label="Incrementer le compteur" />
+      <Button onClick={handleIncrement} label="Increment" />
+      <Button onClick={handleDecrement} label="Decrement" />
     </>
 
   )
